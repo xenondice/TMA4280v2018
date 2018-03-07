@@ -24,6 +24,9 @@ all: $(OBJECTS)
 utest:
 	-./$(TARGET) utest
 
+vtest:
+	-./$(TARGET) vtest > vtest-results
+
 # Remove any wild object and precompiled header files and the program
 clean:
 	-rm -f *.o
