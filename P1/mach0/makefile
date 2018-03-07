@@ -21,6 +21,9 @@ default: all
 all: $(OBJECTS)
 	$(CC) $(OBJECTS) $(CFLAGS) -o $(TARGET)
 
+utest:
+	-./$(TARGET) utest
+
 # Remove any wild object and precompiled header files and the program
 clean:
 	-rm -f *.o

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <float.h>
+#include <string.h>
 
 double approx_arctan(double x, int n) {
 	double sn = 0;
@@ -12,16 +13,34 @@ double approx_arctan(double x, int n) {
 	return sn;
 }
 
+double approx_pi(int n) {
+	return 4*(4*approx_arctan(1.0/5.0, n) - approx_arctan(1.0/239.0, n));
+}
+
+void unit_test_n3() {
+	double expected = 3.1416210293250346;
+	double pi = approx_pi(3);
+	char *ans;
+	if (expected == pi)
+		ans = "success";
+	else
+		ans = "failure";
+	printf("%s\n", ans);
+}
+
 int main(int argc, char *argv[]) {
 	if (argc < 2) {
 		printf("No argument 'n' provided!\n");
 		return 1;
+	} else if (strcmp(argv[1], "utest") == 0) {
+		unit_test_n3();
+		return 0;
 	}
 
 	int n = atoi(argv[1]);
+	double pi = approx_pi(n);
 
-	double approx_pi = 4*(4*approx_arctan(1.0/5.0, n) - approx_arctan(1.0/239.0, n));
-	printf("%.*g\n", DBL_DECIMAL_DIG, approx_pi);
+	printf("%.*g\n", DBL_DECIMAL_DIG, pi);
 	
 	return 0;
 }
