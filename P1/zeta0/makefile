@@ -2,7 +2,7 @@ HEADERS =
 OBJECTS = zeta.o
 TARGET = zeta
 CC = mpicc 
-CFLAGS = -g -O1 -Wall
+CFLAGS = -g -O1 -Wall -lm
 
 # Ignore unfortunatly named files
 .PHONY: all clean default
