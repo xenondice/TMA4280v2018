@@ -4,7 +4,7 @@
 #include <float.h>
 #include <string.h>
 
-double approx_pi(double n) {	
+double approx_pi(int n) {	
 	double sn = 0;
 	for (double i = 1; i <= n; i++)
 		sn += 1.0/(i*i);
